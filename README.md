@@ -12,7 +12,7 @@ new experiments and reanalyzed data.
  
 ## Download and Installation
 ### Requirements
-Windows 10 and 800MB of free disk space.
+Windows 10 and 270MB of free disk space.
 
 ### Download
 The FLEXIQuant-LF GUI as well as FLEXIQuant-LF CLI executables can be downloaded [here](https://github.com/SteenOmicsLab/FLEXIQuantLF/releases) and the Python source code 

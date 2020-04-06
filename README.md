@@ -15,7 +15,7 @@ new experiments and reanalyzed data.
 Windows 10 and 800MB of free disk space.
 
 ### Download
-The FLEXIQuant-LF GUI as well as FLEXIQuant-LF CLI executables can be downloaded [here]() and the Python source code 
+The FLEXIQuant-LF GUI as well as FLEXIQuant-LF CLI executables can be downloaded [here](https://github.com/SteenOmicsLab/FLEXIQuantLF/releases) and the Python source code 
 [here](https://github.com/SteenOmicsLab/FLEXIQuantLF/tree/master/src). 
 
 

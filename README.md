@@ -12,20 +12,19 @@ new experiments and reanalyzed data.
  
 ## Download and Installation
 ### Requirements
-Windows 10 and 800MB of free disk space
+Windows 10 and 800MB of free disk space.
 
 ### Download
-The FLEXIQuant LF GUI executable can be downloaded [here]() and the Python source code 
-[here](https://gitlab.com/KonstantinKahnert/poormansflex/-/tree/master/src/GUI). 
-The FLEXIQuant LF CLI executable can be downloaded [here]() and the Python source code 
-[here](https://gitlab.com/KonstantinKahnert/poormansflex/-/tree/master/src/CLI).
+The FLEXIQuant-LF GUI as well as FLEXIQuant-LF CLI executables can be downloaded [here]() and the Python source code 
+[here](https://github.com/SteenOmicsLab/FLEXIQuantLF/tree/master/src). 
+
 
 ### Installation
-No installation needed. Just move the folder to your location of choice.
+No installation needed. 
 
 ## Getting Started
 ### Input format
-FLEXIQuant LF requires a comma separated file (.csv) containing peptide intensities in the following format as input:
+FLEXIQuant-LF requires a comma separated file (.csv) containing peptide intensities in the following format as input:
 
 <table border="0" width="100%">
     <thead>
@@ -60,11 +59,11 @@ FLEXIQuant LF requires a comma separated file (.csv) containing peptide intensit
 Example file:  
 ![](documentation/images/example_file.png "This is how your input file should look like") 
 
-The example input file can be downloaded [here](https://gitlab.com/KonstantinKahnert/poormansflex/-/tree/master/test_file).
+The example input file can be downloaded [here](https://github.com/SteenOmicsLab/FLEXIQuantLF/tree/master/test_file).
   
   
 ### Output
-FLEXIQuant LF creates the following outputs:
+FLEXIQuant-LF creates the following outputs:
 *	_FQ-LF-output_raw_scores.csv:
 This file contains the calculated raw scores for all peptides.
 
@@ -93,9 +92,9 @@ Contains a linear regression plot for each sample. Can be used as quality contro
 
 *	Output folder: Path to output folder
 
-*	Reference sample identifier: Based on this FLEXIQuant LF determines which samples to choose as reference samples. This needs to match exactly the value in the Group column for all samples that shall be taken as reference.
+*	Reference sample identifier: Based on this FLEXIQuant-LF determines which samples to choose as reference samples. This needs to match exactly the value in the Group column for all samples that shall be taken as reference.
 
-*	RANSAC initiations: Number of times FLEXIQuant LF fits a new RANSAC linear regression model to each sample to choose the best model. Between 5 and 100 initiations can be selected. The more initiations, the higher the reproducibility and the probability that FLEXIQuant LF finds the optimal model. However, choosing a high number can significantly increases the run time and more than 50 initiations rarely provide additional benefit. Default: 30
+*	RANSAC initiations: Number of times FLEXIQuant-LF fits a new RANSAC linear regression model to each sample to choose the best model. Between 5 and 100 initiations can be selected. The more initiations, the higher the reproducibility and the probability that FLEXIQuant-LF finds the optimal model. However, choosing a high number can significantly increases the run time and more than 50 initiations rarely provide additional benefit. Default: 30
 
 *	Modification cutoff: RM score cutoff used to classify peptides as differentially modified. Default: 0.5
 
@@ -121,7 +120,7 @@ The default setting is 30
 The default setting is 0.5  
    ![](documentation/images/GUI_step-by-step_5.png "Step 5") 
 
-6.	**Check “Create plots” checkbox if you want FLEXIQuant LF to create linear regression plots**  
+6.	**Check “Create plots” checkbox if you want FLEXIQuant-LF to create linear regression plots**  
    ![](documentation/images/GUI_step-by-step_6.png "Step 6") 
 
 7.	**Click “Run”**  
@@ -146,9 +145,9 @@ Usage example:
   
 **Optional arguments:**  
 `-n, --num_init INTEGER`  
-    Number of times FLEXIQuant LF fits a new RANSAC linear regression model to each sample to choose the best model.  
+    Number of times FLEXIQuant-LF fits a new RANSAC linear regression model to each sample to choose the best model.  
     This should be an integer between 5 and 100. The more initiations, the higher the reproducibility and the probability   
-    that FLEXIQuant LF finds the optimal model. However, choosing a high number can significantly increases the run  
+    that FLEXIQuant-LF finds the optimal model. However, choosing a high number can significantly increases the run  
     time and more than 50 initiations rarely provide additional benefit. The default value is 30  
 `-mc, --mod_cutoff FLOAT`  
     RM score cutoff used to classify peptides as differentially modified. Should be a a float between 0 and 1.  

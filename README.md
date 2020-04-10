@@ -15,8 +15,8 @@ new experiments and reanalyzed data.
 Windows 10 and 270MB of free disk space.
 
 ### Download
-The FLEXIQuant-LF GUI as well as FLEXIQuant-LF CLI executables can be downloaded [here](https://github.com/SteenOmicsLab/FLEXIQuantLF/releases) and the Python source code 
-[here](https://github.com/SteenOmicsLab/FLEXIQuantLF/tree/master/src). 
+The FLEXIQuant-LF GUI and FLEXIQuant-LF CLI executables as well as the Python source code can be downloaded 
+[here](https://github.com/SteenOmicsLab/FLEXIQuantLF/releases). 
 
 
 ### Installation
@@ -68,22 +68,26 @@ FLEXIQuant-LF creates the following outputs:
 This file contains the calculated raw scores for all peptides.
 
 *	_FQ-LF-output_RM_scores.csv:
-This file contains the calculated RM scores for all peptides that were removed by raw score filtering.
-Additionally, the following columns are included:
-Slope:  Slope of the regression line of the best linear regression model
+This file contains the calculated Relative Modification (RM) scores for all peptides that were removed by raw score 
+filtering. RM scores are equivalent to one minus the modification extent.  
+Additionally, the following columns are included:  
+Slope:  Slope of the regression line of the best linear regression model  
 R2 model: Coefficient of determination of the best linear regression model 
-(calculated only using inliers as determined by RANSAC)
+(calculated only using inliers as determined by RANSAC)  
 R2 data: Coefficient of determination of the best linear regression model 
 (calculated using all data points)
 
 *	_FQ-LF-output_diff_modified.csv:
-This file states for each peptide if it was classified as differentially modified based on the chosen modification cutoff (True) or not (False)
+This file states for each peptide if it was classified as differentially modified based on the chosen modification 
+cutoff (True) or not (False)
 
 *	_FQ-LF-output_removed_peptides.csv:
-This file lists the peptides that were remove by raw score filtering i.e. that resulted in a raw score higher than the median raw score of the sample plus three times the median absolute deviation of all raw scores of the sample
+This file lists the peptides that were remove by raw score filtering i.e. that resulted in a raw score higher than the 
+median raw score of the sample plus three times the median absolute deviation of all raw scores of the sample
 
 *	_FQ-LF-output_regression_plots.pdf (optionally):
-Contains a linear regression plot for each sample. Can be used as quality control the check if the linear regression line was fitted correctly.
+Contains a linear regression plot for each sample. Can be used as quality control the check if the linear regression 
+line was fitted correctly.
 
 ## Usage GUI
 
@@ -92,13 +96,20 @@ Contains a linear regression plot for each sample. Can be used as quality contro
 
 *	Output folder: Path to output folder
 
-*	Reference sample identifier: Based on this FLEXIQuant-LF determines which samples to choose as reference samples. This needs to match exactly the value in the Group column for all samples that shall be taken as reference.
+*	Reference sample identifier: Based on this, FLEXIQuant-LF determines which sample(s) to use as reference 
+sample(s). This needs to match exactly the value in the "Group" column for all samples that shall be taken as reference. 
+If more than one sample is given (e.g. in case of a control group) FLEXIQuant-LF calculates the median intensity over 
+all reference samples for each peptide. 
 
-*	RANSAC initiations: Number of times FLEXIQuant-LF fits a new RANSAC linear regression model to each sample to choose the best model. Between 5 and 100 initiations can be selected. The more initiations, the higher the reproducibility and the probability that FLEXIQuant-LF finds the optimal model. However, choosing a high number can significantly increases the run time and more than 50 initiations rarely provide additional benefit. Default: 30
+*	RANSAC initiations: Number of times FLEXIQuant-LF fits a new RANSAC linear regression model to each sample to choose
+ the best model. Between 5 and 100 initiations can be selected. The more initiations, the higher the reproducibility and
+  the probability that FLEXIQuant-LF finds the optimal model. However, choosing a high number can significantly 
+  increases the run time and more than 50 initiations rarely provide additional benefit. Default: 30
 
 *	Modification cutoff: RM score cutoff used to classify peptides as differentially modified. Default: 0.5
 
-*	Create plots: If checked, a linear regression plot for each sample is created. All plots will be saved in one pdf file (_FQ-LF-output_regression_plots.pdf)
+*	Create plots: If checked, a linear regression plot for each sample is created. All plots will be saved in one pdf 
+file (_FQ-LF-output_regression_plots.pdf)
 
 #### Step by step
 1.	**Select input file**  
@@ -130,9 +141,13 @@ The default setting is 0.5
 Full usage:  
 `FLEXIQuant_LF_CLI.exe -i PATH -o PATH -r TEXT [-n INTEGER] [-mc FLOAT] [-p]`
   
-Usage example:  
-`FLEXIQuant_LF_CLI.exe -i path/to/input_file.csv -o path/to/output_folder/ -r "Control" -n 30 -mc 0.5 -p`  
+Usage example for provided test file:  
+`FLEXIQuant_LF_CLI.exe -i Downloads\FLEXIQuantLF-master\src\test_file_CDC27.csv -o Downloads\FLEXIQuantLF-master\src\ 
+-r "0h" -n 30 -mc 0.5 -p`  
+(Input and output paths need to be adapted to the location of the test file on your computer.)
   
+Note: FLEXIQuant_LF_CLI.exe needs to be started as described above from within a console or script. It can't be started 
+by double-clicking the executable file.
   
 **Required arguments:**  
 `-i, --input_file PATH`  
@@ -140,7 +155,10 @@ Usage example:
 `-o, --output_folder PATH`  
     Path to the folder in which the output files should be placed  
 `-r, --reference TEXT`  
-    Reference sample identifier. This must match the "Group" column value of the reference samples  
+    Based on this, FLEXIQuant-LF determines which sample(s) to use as reference sample(s). This needs to match exactly  
+    the value in the "Group" column for all samples that shall be taken as reference. If more than one sample is given  
+    (e.g. in case of a control group) FLEXIQuant-LF calculates the median intensity over all reference  samples for each  
+    peptide.  
   
   
 **Optional arguments:**  
